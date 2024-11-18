@@ -475,6 +475,11 @@ section .button button:hover{
     margin: auto;
 }
 
+.contact .social-links{
+    text-align: center;
+    padding: 10px;
+}
+
 footer{
     background: #b74b4b;
     padding: 15px 0;
