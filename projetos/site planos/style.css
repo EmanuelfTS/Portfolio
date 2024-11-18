@@ -1,0 +1,33 @@
+body {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background-color: rgb(215, 217, 243);
+}
+.balao {
+    background-color: #f4f4f4;
+    display: flex;
+    gap: 8%;
+    padding: 2% 4%;
+    border-radius: 2mm;
+}
+.roxo {
+    height: 150%;
+    background-color: rgb(113, 113, 206);
+    border-radius: 2mm;
+    padding: 2% 6%;
+    color: #f4f4f4;
+}
+.desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.preco {
+    display: flex;
+    align-items: center;
+    justify-items: start;
+}
+h1 {
+    font-size: 250%;
+}

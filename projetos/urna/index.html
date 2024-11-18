@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urna Eletrônica - Primeiro Turno Municipal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .urna-container {
+            width: 400px;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+        .tela-urna {
+            border: 2px solid #000;
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 100px;
+        }
+        .tela-urna h2 {
+            margin: 0;
+        }
+        .numero-input {
+            font-size: 32px;
+            letter-spacing: 10px;
+            padding: 5px;
+            border: none;
+            outline: none;
+            width: 100%;
+            text-align: center;
+        }
+        .botao {
+            width: 80px;
+            height: 50px;
+            margin: 5px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .botao-confirmar {
+            background-color: green;
+            color: #fff;
+            width: auto;
+            padding: 0 20px;
+        }
+        .botao-corrige {
+            background-color: orange;
+            color: #fff;
+            width: auto;
+            padding: 0 20px;
+        }
+        .botao-branco {
+            background-color: #ddd;
+            color: #000;
+            width: auto;
+            padding: 0 20px;
+        }
+        .teclado {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="urna-container">
+        <div class="tela-urna" id="tela-urna">
+            <h2>Votando para: <span id="cargo">Vereador</span></h2>
+            <p id="info-cargo">(5 dígitos)</p>
+            <input type="text" id="numero-input" class="numero-input" disabled maxlength="5">
+            <p id="nome-candidato">---</p>
+        </div>
+        <div class="teclado">
+            <button class="botao" onclick="digitarNumero(1)">1</button>
+            <button class="botao" onclick="digitarNumero(2)">2</button>
+            <button class="botao" onclick="digitarNumero(3)">3</button>
+            <button class="botao" onclick="digitarNumero(4)">4</button>
+            <button class="botao" onclick="digitarNumero(5)">5</button>
+            <button class="botao" onclick="digitarNumero(6)">6</button>
+            <button class="botao" onclick="digitarNumero(7)">7</button>
+            <button class="botao" onclick="digitarNumero(8)">8</button>
+            <button class="botao" onclick="digitarNumero(9)">9</button>
+            <button class="botao" onclick="digitarNumero(0)">0</button>
+        </div>
+        <div class="opcoes">
+            <button class="botao botao-branco" onclick="votoBranco()">BRANCO</button>
+            <button class="botao botao-corrige" onclick="corrige()">CORRIGE</button>
+            <button class="botao botao-confirmar" onclick="confirmar()">CONFIRMA</button>
+        </div>
+    </div>
+
+    <script>
+        const candidatos = {
+            "vereador": {
+                "12345": "Vereador X",
+                "67890": "Vereador Y"
+            },
+            "prefeito": {
+                "12": "Prefeito A",
+                "45": "Prefeito B"
+            }
+        };
+
+        let cargoAtual = "vereador";
+        let numeroDigitado = "";
+
+        function digitarNumero(num) {
+            const maxDigitos = cargoAtual === "prefeito" ? 2 : 5;
+
+            if (numeroDigitado.length < maxDigitos) {
+                numeroDigitado += num;
+                document.getElementById("numero-input").value = numeroDigitado;
+
+                if (numeroDigitado.length === maxDigitos) {
+                    exibirCandidato();
+                }
+            }
+        }
+
+        function exibirCandidato() {
+            const candidato = candidatos[cargoAtual][numeroDigitado];
+            if (candidato) {
+                document.getElementById("nome-candidato").innerText = "Candidato: " + candidato;
+            } else {
+                document.getElementById("nome-candidato").innerText = "Número inválido";
+            }
+        }
+
+        function corrige() {
+            numeroDigitado = "";
+            document.getElementById("numero-input").value = "";
+            document.getElementById("nome-candidato").innerText = "---";
+        }
+
+        function votoBranco() {
+            numeroDigitado = "BRANCO";
+            document.getElementById("numero-input").value = "BR";
+            document.getElementById("nome-candidato").innerText = "Voto em Branco";
+        }
+
+        function confirmar() {
+            const candidato = candidatos[cargoAtual][numeroDigitado];
+
+            if (numeroDigitado === "BRANCO") {
+                document.getElementById("nome-candidato").innerText = "Voto em Branco confirmado!";
+            } else if (candidato) {
+                document.getElementById("nome-candidato").innerText = `Voto confirmado para: ${candidato}`;
+            } else {
+                document.getElementById("nome-candidato").innerText = "Número inválido. Corrija ou vote em branco.";
+                return;
+            }
+
+            if (cargoAtual === "vereador") {
+                cargoAtual = "prefeito";
+                configurarTelaParaPrefeito();
+            } else {
+                exibirMensagemFim();
+            }
+            corrige();
+        }
+
+        function configurarTelaParaPrefeito() {
+            document.getElementById("cargo").innerText = "Prefeito";
+            document.getElementById("info-cargo").innerText = "(2 dígitos)";
+            document.getElementById("nome-candidato").innerText = "---";
+        }
+
+        function exibirMensagemFim() {
+            document.getElementById("tela-urna").innerHTML = `
+                <h2>FIM</h2>
+            `;
+        }
+    </script>
+</body>
+</html>

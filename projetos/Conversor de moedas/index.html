@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Conversor de moedas</title>
+</head>
+<body>
+    <div class="ballon">
+        <h1>
+            <span class="emoji">💲</span>Conversor de moedas<span class="emoji">💲</span>
+        </h1>
+        <label>
+            <span class="text">Digite o valor:</span>
+            <input type="number" id="valor" placeholder="Digite o valor em Reais(R$)">
+            <span class="text">Escolha a moeda para conversão:</span>
+            <select name="moedas" id="select">
+                <option selected>Selecione uma moeda</option>
+                <option value="0">Dólar americano($)</option>
+                <option value="1">Euro(€)</option>
+                <option value="2">Won sul-coreano(₩)</option>
+                <option value="3">Peso mexicano($)</option>
+                <option value="4">Dólar australiano($)</option>
+            </select>
+            <button onclick="calc()">CALCULAR</button>
+            <script src="javascript.js"></script>
+            <div id="s">
+                <p id="result"></p>
+            </div>
+        </label>
+    </div>
+</body>
+</html>
