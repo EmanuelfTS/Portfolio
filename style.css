@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins%3Awght%40100%3B200%3B300%3B400%3B500%3B600&display=swap%27%29%3B);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
 *{
     margin:0;
@@ -9,7 +9,7 @@
     scroll-behavior: smooth;
 }
 
-body{
+html, body{
     width: 100%;
     height: auto;
     background-color: black;
@@ -42,6 +42,9 @@ body{
 nav{
     width: 100%;
     height: 10vh;
+    min-height: 60px;
+    position: relative;
+    z-index: 100;
 }
 
 .nav-container{
@@ -68,11 +71,11 @@ nav{
     cursor: pointer;
     position: absolute;
     right: 15px;
-    top: 10px;
+    top: 12px;
     color: white;
     opacity: 0;
     pointer-events: none;
-    font-size: clamp(2.5rem,0.5rem + 5vw, 3rem);
+    font-size: clamp(2rem, 0.5rem + 5vw, 2.5rem);
 }
 
 .nav-container .links{
@@ -81,7 +84,7 @@ nav{
 
 .nav-container .links a{
     position: relative;
-    font-size: 1,2rem;
+    font-size: 1.2rem;
     color: white;
     margin: 0 20px;
     text-decoration: none;
@@ -109,15 +112,18 @@ nav{
 }
 
 .dropdown{
-    z-index: 100;
-    position: absolute;
+    z-index: 1000;
+    position: fixed;
     top: 0;
-    transform: translateY(-500);
+    left: 0;
+    transform: translateY(-500px);
     width: 100%;
     height: auto;
-    backdrop-filter: blur(4px) brightness(40%);
-    box-shadow: 0 0 20 black;
-    transition: 0.2s linear;
+    padding: 20px 0;
+    backdrop-filter: blur(8px) brightness(25%);
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 20px black;
+    transition: 0.3s ease-in-out;
 }
 
 .dropdown .links a{
@@ -127,6 +133,7 @@ nav{
     justify-content: center;
     padding: 15px 0;
     align-items: center;
+    font-size: 1.1rem;
     transition: 0.2s linear;
 }
 
@@ -141,20 +148,25 @@ nav{
 section{
     width: 100%;
     min-height: 90vh;
+    padding: 40px 0;
 }
 section .main-container{
     display: flex;
     justify-content: space-between;
-    padding-left: 100px;
+    padding: 0 8%;
     align-items: center;
+    gap: 40px;
+    min-height: 80vh;
 }
  
 .main-container .image{
-    width: 80vh;
-    height: 80vh;
-    border-radius: 100%;
+    width: min(42vw, 500px);
+    aspect-ratio: 1 / 1;
+    height: auto;
+    border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 50px #b74b4b;
+    flex-shrink: 0;
 }
 .main-container .image img{
     object-fit: cover;
@@ -181,10 +193,10 @@ section .main-container{
 
 .main-container .content{
     color: white;
-    width: 40%;
+    width: 50%;
 }
 .content h1{
-    font-size: clamp(1rem, 1rem + 5vh, 1.8rem);
+    font-size: clamp(1.4rem, 1rem + 2vw, 2.2rem);
 }
 .content h1 span{
     color: #b74b4b;
@@ -192,8 +204,9 @@ section .main-container{
 }
 
 .content .typewriter{
-    font-size: clamp(1rem, 1rem + 5vh, 2.5rem);
+    font-size: clamp(1.1rem, 0.8rem + 2vw, 2.3rem);
     font-weight: 600;
+    margin: 8px 0;
 }
 
 .content .typewriter-text{
@@ -215,12 +228,11 @@ section .main-container{
     content: "";
     position: absolute;
     height: 100%;
-    border-left: 5px solid #f1f1f1;
+    border-left: 4px solid #f1f1f1;
     right: -10px;
     animation: cursor 0.7s infinite, digita 20s steps(15) infinite;
     width: calc(100% + 15px);
     background-color: black;
-
 }
 
 @keyframes digita {
@@ -259,8 +271,9 @@ section .main-container{
 }
 
 .content p{
-    font-size: clamp(0.4rem, 0.2rem + 9vh, 1rem);
-    margin: 10px;
+    font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.05rem);
+    line-height: 1.6;
+    margin: 15px 0;
 }
 
 .social-links i{
@@ -285,26 +298,29 @@ section .main-container{
     filter: drop-shadow(0 0 10px #b74b4b);
 }
 .content button{
-    width: 50%;
+    min-width: 180px;
+    width: auto;
     height: auto;
-    margin: 30px;
+    padding: 12px 28px;
+    margin: 25px 0;
     background-color: #b74b4b;
     color: white;
-    border: none;
+    border: 2px solid #b74b4b;
     outline: none;
-    font-size: 120%;
+    font-size: 1.1rem;
     font-weight: 700;
-    border-radius: 5px;
+    border-radius: 6px;
+    cursor: pointer;
     transition: 0.2s linear;
 }
 
 .content button:hover{
-    scale: 1.1;
+    scale: 1.05;
     color: #b74b4b;
     border: 2px solid #b74b4b;
     background-color: transparent;
     font-weight: 700;
-    box-shadow: 0 0 40px;
+    box-shadow: 0 0 40px #b74b4b;
 }
 
 
@@ -312,7 +328,8 @@ section .main-container{
 
 
 section .content{
-    width: 80%;
+    width: 85%;
+    max-width: 1200px;
     margin: 0px auto;
     font-family: 'Poppins', sans-serif;
 }
@@ -321,6 +338,7 @@ section .content{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
 }
 section .title{
     display: flex;
@@ -330,7 +348,7 @@ section .title{
 
 section .title span{
     color: white;
-    font-size: 30px;
+    font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
     font-weight: 600;
     position: relative;
     padding-bottom: 8px;
@@ -355,11 +373,15 @@ section .title span::after{
 
 .about .about-details .left{
     width: 45%;
+    display: flex;
+    justify-content: center;
 }
 
 .about .left img{
-    height: 400px;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     object-fit: cover;
     border-radius: 12px;
 }
@@ -370,7 +392,7 @@ section .title span::after{
 
 section .topic{
     color: white;
-    font-size: 25px;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem);
     font-weight: 500;
     margin-bottom: 10px;
 }
@@ -378,6 +400,7 @@ section .topic{
 .about-details .right p{
     text-align: justify;
     color: white;
+    line-height: 1.7;
 }
 
 section .button{
@@ -385,10 +408,10 @@ section .button{
 }
 section .button button{
     outline: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 25px;
-    font-weight: 400;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 500;
     background: #b74b4b;
     color: #f1f1f1;
     border: 2px solid transparent;
@@ -416,6 +439,7 @@ section .button button:hover{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
 }
 .skills-details .text{
     width: 50%;
@@ -423,40 +447,43 @@ section .button button:hover{
 .skills-details p{
     color: white;
     text-align: justify;
+    line-height: 1.7;
 }
 .skills .skills-details .experience{
     display: flex;
     align-items: center;
-    margin: 0 10px;
+    margin: 20px 0 0;
 }
 .skills-details .experience .num{
     color: white;
-    font-size: 80px;
+    font-size: clamp(3.5rem, 3rem + 2vw, 5rem);
+    font-weight: 600;
 }
 .skills-details .experience .exp{
     color: white;
-    margin-left: 20px;
-    font-size: 18px;
+    font-size: 1.1rem;
     font-weight: 500;
-    margin: 0 6px;
+    margin-left: 12px;
 }
 .skills-details .boxes{
     width: 45%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 20px;
 }
 .skills-details .box{
-    width: calc(100%/2 - 20px);
-    margin: 20px 0;
+    width: calc(50% - 15px);
+    margin: 10px 0;
 }
 .skills-details .boxes .topic{
-    font-size: 20px;
+    font-size: 1.2rem;
     color: #b74b4b;
 }
 .skills-details .boxes .per{
-    font-size: 60px;
+    font-size: clamp(2.2rem, 1.8rem + 2vw, 3.5rem);
     color: #b74b4b;
+    font-weight: 600;
 }
 
 
@@ -467,69 +494,71 @@ section .button button:hover{
     flex-direction: column;
 }
 #Cards{
-    align-items: center;
-    width: 68vw;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 28px;
+    justify-items: center;
 }
 
 .card{ 
-    margin-top: 1%;
-    margin-bottom: 1%;
-    width: calc(max(18vw,32vh));
+    width: 100%;
+    max-width: 350px;
+    min-height: 360px;
+    height: auto;
     display: flex;
     flex-direction: column;
-    object-fit: cover;
+    justify-content: space-between;
     border-radius: 20px;
     background-color: #b74b4b;
-    height: 40vh;
     overflow: hidden;
     align-items: center;
-
+    padding-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.card button{
-    background: black;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    border-color: transparent;
-    color: black;
-}
-.card button:hover{
-    border: none;
-    animation: none;
-    background-color: #ffffff;
-    box-shadow: none;
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(183, 75, 75, 0.4);
 }
 .card img{
     width: 100%;
-    justify-self: center;
-    align-self: center;
+    height: 180px;
     object-fit: cover;
-    height: 40%;
-    
 }
 .card h1{
-    font-size: calc(max(1.2vh,1.2vw));
+    font-size: 1.3rem;
     color: black;
-    object-fit: cover;
-    text-size-adjust: 1vh;
-    margin-bottom: 0;
-    
+    margin: 14px 12px 6px;
+    text-align: center;
 }
 .card p{
-    max-height: 100%;
-    height: 0;
-    padding-bottom: 25%;
-    font-size: calc(max(1vh,1vw));
-    width: 90%;
+    font-size: 0.95rem;
+    width: 88%;
     color: black;
-    object-fit: cover;
+    margin: 0 auto 16px;
+    text-align: center;
+    line-height: 1.45;
+    flex-grow: 1;
+}
+.card button{
+    width: auto;
+    min-width: 150px;
     margin: 0;
-    margin-bottom: 0;
-    margin-top: 0;
+    padding: 10px 22px;
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.card button:hover{
+    scale: 1.05;
+    background-color: #ffffff;
+    color: black;
+    border-color: #ffffff;
+    box-shadow: none;
 }
 
 
@@ -539,14 +568,11 @@ section .button button:hover{
 .contact{
     display: flex;
     background: transparent;
-}
-.contact .content{
-    padding: 0;
-    margin: 0;
+    min-height: auto;
 }
 .contact .content{
     margin: 0 auto;
-    padding: 30px 0;
+    padding: 40px 0;
 }
 .contact .text{
     width: 80%;
@@ -556,17 +582,18 @@ section .button button:hover{
 
 .contact .social-links{
     text-align: center;
+    margin-top: 15px;
 }
 
 
 footer{
     background: #b74b4b;
-    padding: 15px 0;
+    padding: 15px 10px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
 }
 footer .text span{
-    font-size: 17px;
+    font-size: clamp(0.85rem, 0.8rem + 0.5vw, 1.05rem);
     font-weight: 400;
     color: #f1f1f1; 
 }
@@ -595,6 +622,7 @@ footer .text span a:hover{
     .about .about-details{
         justify-content: center;
         flex-direction: column;
+        gap: 25px;
     }
     .about .about-details .left{
         display: flex;
@@ -602,33 +630,24 @@ footer .text span a:hover{
         width: 100%;
     }
     .about-details .right{
-        width: 90%;
-        margin: 40px 0;
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
     }
-}
-
-@media (max-width: 900px){
-    .about .left img{
-        height: 350px;
-        width: 350px;
+    .about-details .right p{
+        text-align: left;
     }
 }
 
 @media (max-width: 968px){
     nav .logo{
         position: absolute;
-        top: 16px;
-        left: 15px;
-        font-size: 1.5rem;
+        top: 14px;
+        left: 20px;
+        font-size: 1.6rem;
     }
 
-    section .main-container {
-        padding-left: 0px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /*.nav-container .links{
+    .nav-container .links{
         display: none;
     }
 
@@ -636,65 +655,118 @@ footer .text span a:hover{
     .cancel{
         opacity: 1;
         pointer-events: visible;
-    }*/
-
-    .main-container .content{
-        margin-top: 20px;
-        width: 80%;
     }
 
-    .social-links i{
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.5rem;
+    section{
+        min-height: auto;
+        padding: 40px 0;
+    }
+
+    section .main-container {
+        padding: 20px 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 25px;
+        min-height: auto;
     }
 
     .main-container .image{
-        z-index: -1;
-        width: 50%;
-        height: 60%;
+        width: min(65vw, 280px);
+        aspect-ratio: 1 / 1;
+        height: auto;
+    }
+
+    .main-container .content{
+        margin-top: 10px;
+        width: 95%;
+    }
+
+    .social-links i{
+        width: 2.6rem;
+        height: 2.6rem;
+        font-size: 1.3rem;
     }
 
     .skills .skills-details{
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        gap: 30px;
     }
 
     .skills-details .text{
         width: 100%;
-        margin-bottom: 50px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .skills-details p{
+        text-align: left;
+    }
+
+    .skills .skills-details .experience{
+        justify-content: center;
+        text-align: left;
     }
 
     .skills-details .boxes{
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
+        text-align: center;
     }
 
     .contact .text{
         width: 100%;
+    }
+}
 
+@media (max-width: 900px){
+    .about .left img{
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 500px) {
+    section .content{
+        width: 90%;
     }
 
-}
-@media (max-width: 500px) {
     .main-container .image{
-        width: 50%;
-        height: 60%;
+        width: min(70vw, 230px);
         margin-bottom: 0px;
     }
 
     .main-container .content{
-        width: 80%;
+        width: 100%;
+    }
+
+    .content .typewriter{
+        font-size: clamp(1rem, 4.5vw, 1.35rem);
     }
 
     .main-container button{
         margin-top: 15px;
+        width: 80%;
+        max-width: 240px;
+    }
+
+    .about .left img{
+        max-width: 260px;
+    }
+
+    .skills-details .box{
+        width: calc(50% - 10px);
     }
 
     .skills-details .boxes .per{
-        font-size: 50px;
+        font-size: 2.2rem;
         color: #b74b4b;
+    }
+
+    #Cards{
+        grid-template-columns: 1fr;
     }
 }

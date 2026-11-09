@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 </head>
 <body>
 
@@ -30,16 +29,16 @@
             </div>
             <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
          </div>
-        <!--<div class="droopdown">
+        <div class="dropdown">
             <div class="links">
-                <a href="#">Início</a>
-                <a href="#">Sobre mim</a>
-                <a href="#">Habilidades</a>
-                <a href="#">Projetos</a>
-                <a href="#">Contato</a>
+                <a href="#main-container" onclick="cancel()">Início</a>
+                <a href="#about" onclick="cancel()">Sobre mim</a>
+                <a href="#skills" onclick="cancel()">Habilidades</a>
+                <a href="#projects" onclick="cancel()">Projetos</a>
+                <a href="#contact" onclick="cancel()">Contato</a>
                 <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             </div>
-        </div>-->
+        </div>
     </nav>
 
 
@@ -75,7 +74,7 @@
                     </a>
                 </div>
                 <div class="btn" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1700">
-                    <button> Me contate</button>
+                    <button onclick="location.href='#contact'"> Me contate</button>
                 </div>
             </div>
         </div>
@@ -161,28 +160,39 @@
             <div class="title" data-aos="fade-up" data-aos-duration="1500"><span>Projetos</span></div>
             <div id="Cards">
                 <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
-                    <img src="./projetos/Conversor de moedas/image.png">
+                    <img src="./projetos/Conversor de moedas/image.png" alt="Calculadora de Moedas">
                     <h1 style="text-align: center;">Calculadora de Moedas</h1>
                     <p> Converte diferentes tipos de moedas porcentávelmente, como: dólar, euro, real.</p>
                     <button onclick="window.open('./projetos/Conversor de moedas')">Ver Projeto</button>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><img src="./projetos/Site calculadora de IMC/image.png">
+                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                    <img src="./projetos/Site calculadora de IMC/image.png" alt="Calculadora IMC">
                     <h1 style="text-align: center;">Calculadora IMC</h1>
                     <p>Esta calculadora faz a proporção da sua massa corporal.</p>
                     <button onclick="window.open('./projetos/Site calculadora de IMC/')">Ver Projeto</button>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><img src="./projetos/urna/image.png"><h1 style="text-align: center;">Urna Eletronica</h1>
-                    <p>Simulador de Eleições municipais de primeiro turno entre cidades.</P>
-                    <button onclick="window.open('./projetos/urna')">Ver Projeto</button></div>
-                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><img src="./projetos/Lista de compras - site/image.png"><h1 style="text-align: center;">Lista de Compras</h1>
+                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+                    <img src="./projetos/urna/image.png" alt="Urna Eletrônica">
+                    <h1 style="text-align: center;">Urna Eletronica</h1>
+                    <p>Simulador de Eleições municipais de primeiro turno entre cidades.</p>
+                    <button onclick="window.open('./projetos/urna')">Ver Projeto</button>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+                    <img src="./projetos/Lista de compras - site/image.png" alt="Lista de Compras">
+                    <h1 style="text-align: center;">Lista de Compras</h1>
                     <p> Lista de compra digital para ser usada em qualquer tipo de compra.</p>
-                    <button onclick="window.open('./projetos/Lista de compras - site')">Ver Projeto</button></div>
-                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600"><img src="./projetos/site planos/image.png"><h1 style="text-align: center;">Card Planos</h1>
-                    <p> Exemplo simples de estilização em html.                        .</p>
+                    <button onclick="window.open('./projetos/Lista de compras - site')">Ver Projeto</button>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+                    <img src="./projetos/site planos/image.png" alt="Card Planos">
+                    <h1 style="text-align: center;">Card Planos</h1>
+                    <p> Exemplo simples de estilização em html.</p>
                     <button onclick="window.open('./projetos/site planos')">Ver Projeto</button>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700"><img src="./projetos/faqs/image.png"><h1 style="text-align: center;">Faqs-Jquery</h1>
-                    <p> Exemplos simples da utilização de Faqs no Jquery.               .</p>
+                <div class="card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700">
+                    <img src="./projetos/faqs/image.png" alt="Faqs-Jquery">
+                    <h1 style="text-align: center;">Faqs-Jquery</h1>
+                    <p> Exemplos simples da utilização de Faqs no Jquery.</p>
                     <button onclick="window.open('./projetos/faqs')">Ver Projeto</button>
                 </div>
             </div>
@@ -200,7 +210,7 @@
             <div class="text">
                 <div class="topic" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">Gostou do que viu?</div>
                 <div class="button" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="400">
-                    <button>Fale comigo</button>
+                    <button onclick="window.open('mailto:emanuelfelipess153@gmail.com?subject=Email+profissional')">Fale comigo</button>
                 </div>
             </div>
             <div class="social-links">
